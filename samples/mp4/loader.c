@@ -9,12 +9,12 @@
 
 #define USAGE "./loader [pids...]\n"
 
-static int process_ringbuf_data(void *, void *data, size_t) {
-	fprintf(stdout, "%s", (char *)data);
-	return 0;
-}
+// static int process_ringbuf_data(void *, void *data, size_t) {
+//     fprintf(stdout, "%s", (char *)data);
+// 	   return 0;
+// }
 
-int main(int argc, char *argv[])
+int main()
 {
 	return 0;
 }
