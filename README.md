@@ -20,6 +20,7 @@ To implement the program, your objective is to
    - Download (to kernel) the Rex program above and hook it upon writes to `/dev/null` (the hook is already provided above)
    - Pass pids from arguments to the queue
    - Use (how?) `process_ringbuf_data` to print CPU time from ring buffer
+   - Trigger the aforementioned Rex program by writting anything to `/dev/null`
 
 > [!TIP]
 > We provide a test script (`samples/mp4/test.sh`) to help check your implementation by yourselves.
