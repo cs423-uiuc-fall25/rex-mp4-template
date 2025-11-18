@@ -2,6 +2,8 @@
 
 > [!IMPORTANT]
 > For this MP you need work on the x86-64 architecture. We assume the x86-64 architecture and ABI in this writeup. Engineering-IT has provided x86-64 VMs for all students, please refer to Piazza post for the access.
+> 
+> This documentation is shipped with your starter code, but please always refer to https://github.com/cs423-uiuc-fall25/rex-mp4-template for the most recent version.
 
 ## Introduction
 
@@ -15,12 +17,12 @@ Your task is to implement a Rex kernel extension program that reads and pass CPU
 
 To implement the program, your objective is to
 
-1. Write a Rex program (`samples/mp1/src/main.rs`) that reads pids from the queue, look up its CPU time and pass the result to the ring buffer. Static definition of queue and ring buffer are already provided.
+1. Write a Rex program (`samples/mp1/src/main.rs`) that reads pids from the queue, looks up its CPU time and pass the result to the ring buffer. Static definition of queue and ring buffer are already provided.
 2. Write a C program (`samples/mp1/loader.c`) that
-   - Download (to kernel) the Rex program above and hook it upon writes to `/dev/null` (the hook is already provided above)
-   - Pass pids from arguments to the queue
-   - Use (how?) `process_ringbuf_data` to print CPU time from ring buffer
-   - Trigger the aforementioned Rex program by writting anything to `/dev/null`
+   - Downloads (to kernel) the Rex program above and hook it upon writes to `/dev/null` (the hook is already provided above)
+   - Passes pids from arguments to the queue
+   - Uses (how?) `process_ringbuf_data` to print CPU time from ring buffer
+   - Triggers the aforementioned Rex program by writting anything to `/dev/null`
 
 > [!TIP]
 > We provide a test script (`samples/mp4/test.sh`) to help check your implementation by yourselves.
@@ -36,7 +38,7 @@ git submodule update --init --progress
 
 #### Dependencies
 
-Here we assume you are using VM provided. If you work on your own setups you can refer to full documentations in [docs/getting-started.md](./docs/getting-started.md). Nix is also supported.
+Here we assume you are using VM provided. If you work on your own setups please refer to full documentations in [docs/getting-started.md](./docs/getting-started.md). Nix is also supported.
 
 ```bash
 bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)" # install llvm
@@ -45,9 +47,11 @@ sudo apt install zsh cmake elfutils libstdc++ meson-1.5 mold ninja python3 qemu-
 
 #### Build
 
-Please follow build steps using `meson` in [docs/getting-started.md](./docs/getting-started.md). To be noted, this can take a long time, you can try using [tmux](https://manpages.ubuntu.com/manpages/noble/en/man1/tmux.1.html) to keep the job running in background.
+Please follow build steps with `meson` in [docs/getting-started.md](./docs/getting-started.md). To be noted, this can take a long time, you can try using [tmux](https://manpages.ubuntu.com/manpages/noble/en/man1/tmux.1.html) to keep the job running in background.
 
 #### Run and Test
 
-You can try examples provided by Rex. Once you complete the implementation, you can test them out using `zsh test.sh`
+- Try examples provided by Rex
+
+- Once you complete the implementation, you can test them out using `zsh test.sh`
 
