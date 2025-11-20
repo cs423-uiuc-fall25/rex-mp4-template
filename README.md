@@ -4,6 +4,8 @@
 > For this MP you need work on the x86-64 architecture. We assume the x86-64 architecture and ABI in this writeup. Engineering-IT has provided x86-64 VMs for all students, please refer to Piazza post for the access.
 > 
 > This documentation is shipped with your starter code, but please always refer to https://github.com/cs423-uiuc-fall25/rex-mp4-template for the most recent version.
+>
+> Claim this MP at https://classroom.github.com/a/DeVJRMF3
 
 ## Introduction
 
