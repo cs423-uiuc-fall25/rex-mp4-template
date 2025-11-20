@@ -43,7 +43,7 @@ flowchart LR
 	subgraph Userspace
 		loader-.->|1.load and attach<br>to /dev/null|mp1
 		loader-.->|2.register|ringbuffn(int process_ringbuf_data<br>loader.c)-.->|sample fn|RingBuf
-		loader-.->|3.trigger by write|mp1
+		loader-.->|3.trigger by write<br>/dev/null|mp1
 		loader-.->|4.unload|mp1
 	end
 	loader(int main<br>loader.c)
