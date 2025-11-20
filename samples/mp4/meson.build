@@ -50,3 +50,9 @@ mp1_loader = executable(
   dependencies: [librex_dep, libbpf_dep, kernel_dep],
   pie: true
 )
+
+mp1_test_script = configure_file(
+    input: 'test.sh',
+    output: 'test.sh',
+    copy: true
+)
