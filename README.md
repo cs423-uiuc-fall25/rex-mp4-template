@@ -72,7 +72,7 @@ Here we assume you are using VM provided. If you work on your own setups please 
 
 ```bash
 bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)" # install llvm
-sudo apt install zsh cmake elfutils libstdc++ meson-1.5 mold ninja python3 qemu-system bindgen lld flex bison pkgconf libelf libssl-dev # instaill build dependencies
+sudo apt install zsh cmake elfutils libstdc++-13-dev meson-1.5 mold ninja-build python3 qemu-system bindgen lld flex bison pkgconf libelf-dev libssl-dev # instaill build dependencies
 ```
 
 #### Build
