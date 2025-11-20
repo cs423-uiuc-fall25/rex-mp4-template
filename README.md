@@ -72,7 +72,7 @@ Here we assume you are using VM provided. If you work on your own setups please 
 
 ```bash
 bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)" # install llvm
-sudo apt install zsh cmake elfutils libstdc++-13-dev meson-1.5 mold ninja-build python3 qemu-system bindgen lld flex bison pkgconf libelf-dev libssl-dev # instaill build dependencies
+sudo apt update && sudo apt install zsh cmake elfutils libstdc++-13-dev meson-1.5 mold ninja-build python3 qemu-system bindgen lld flex bison pkgconf libelf-dev libssl-dev # instaill build dependencies
 sudo update-alternatives --install /usr/bin/clang  clang  /usr/bin/clang-20  200 # alias for clang
 sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-20 200
 ```
