@@ -26,6 +26,34 @@ To implement the program, your objective is to
 
 > [!TIP]
 > We provide a test script (`samples/mp4/test.sh`) to help check your implementation by yourselves.
+>
+> Useful references: [eBPF Docs](https://docs.ebpf.io/ebpf-library/libbpf/userspace/), [Rex README](./Rex.md)
+
+**Overall Structure**
+
+```mermaid
+flowchart LR
+	mp1(fn mp1<br>src/main.rs)
+	subgraph Kernel/Rex
+	    Queue
+	    RingBuf
+	end
+	subgraph Userspace
+		loader-.->|1.load and attach<br>to /dev/null|mp1
+		loader-.->|2.register|ringbuffn(int process_ringbuf_data<br>loader.c)-.->|sample fn|RingBuf
+		loader-.->|3.trigger by write|mp1
+		loader-.->|4.unload|mp1
+	end
+	loader(int main<br>loader.c)
+	mp1-->|submit CPU time|RingBuf
+	mp1-->|read from|Queue
+	loader-->|add pids|Queue
+	ringbuffn-->|read from|RingBuf
+```
+
+`...`: "meta" control flow
+
+`-->`: data flow
 
 ## Environment Setup
 
