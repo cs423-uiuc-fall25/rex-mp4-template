@@ -66,24 +66,12 @@ cd YOUR_MP4_REPO
 git submodule update --init --progress
 ```
 
-#### Dependencies
+#### Dependencies Installation and Building Steps
 
-Here we assume you are using VM provided. If you work on your own setups please refer to full documentations in [docs/getting-started.md](./docs/getting-started.md). Nix is also supported.
-
-```bash
-bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)" # install llvm
-sudo apt update && sudo apt install zsh cmake elfutils libstdc++-13-dev meson-1.5 mold ninja-build python3 qemu-system bindgen lld flex bison pkgconf libelf-dev libssl-dev # instaill build dependencies
-sudo update-alternatives --install /usr/bin/clang  clang  /usr/bin/clang-20  200 # alias for clang
-sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-20 200
-```
-
-#### Build
-
-Please follow build steps with `meson` in [docs/getting-started.md](./docs/getting-started.md). To be noted, this can take a long time, you can try using [tmux](https://manpages.ubuntu.com/manpages/noble/en/man1/tmux.1.html) to keep the job running in background.
+Check out [docs/getting-started.md](./docs/getting-started.md). To be noted, this can take a long time, you can try using [tmux](https://manpages.ubuntu.com/manpages/noble/en/man1/tmux.1.html) to keep the job running in background.
 
 #### Run and Test
 
 - Try examples provided by Rex
 
 - Once you complete the implementation, you can test them out using `zsh test.sh`
-
