@@ -68,7 +68,14 @@ git submodule update --init --progress
 
 #### Dependencies Installation and Building Steps
 
-Check out [docs/getting-started.md](./docs/getting-started.md). To be noted, this can take a long time, you can try using [tmux](https://manpages.ubuntu.com/manpages/noble/en/man1/tmux.1.html) to keep the job running in background.
+Ubuntu 24 enabled [AppArmor](https://documentation.ubuntu.com/server/how-to/security/apparmor/) by default, which blocks nix from creating uid map in the sandbox. So you need to allow uid mapping by
+
+```shell
+echo "kernel.apparmor_restrict_unprivileged_userns = 0" | sudo tee /etc/sysctl.d/60-apparmor-namespace.conf
+sudo systemctl restart systemd-sysctl
+```
+
+This change is persistent, next time you can follow [docs/getting-started.md](./docs/getting-started.md) directly. To be noted, submodule cloning and building can take a long time, you can try using [tmux](https://manpages.ubuntu.com/manpages/noble/en/man1/tmux.1.html) to keep the job running in background.
 
 #### Run and Test
 
