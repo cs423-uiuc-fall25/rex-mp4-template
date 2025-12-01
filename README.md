@@ -81,4 +81,20 @@ This change is persistent, next time you can follow [docs/getting-started.md](./
 
 - Try examples provided by Rex
 
+If you get such error:
+
+```shell
+netid@fa25-cs423:~/mp4-name/build/linux$ ../../scripts/q-script/nix-q 
+Could not access KVM kernel module: Permission denied
+qemu-system-x86_64: failed to initialize kvm: Permission denied
+qemu-system-x86_64: falling back to tcg
+qemu-system-x86_64: CPU model 'host' requires KVM or HVF
+```
+
+Add yourself to `kvm` group:
+
+```shell
+sudo usermod -aG kvm $USER
+```
+
 - Once you complete the implementation, you can test them out using `zsh test.sh`
