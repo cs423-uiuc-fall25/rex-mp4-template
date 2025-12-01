@@ -94,7 +94,7 @@ qemu-system-x86_64: CPU model 'host' requires KVM or HVF
 Add yourself to `kvm` group:
 
 ```shell
-sudo usermod -aG kvm $USER
+sudo usermod -aG kvm $USER # then log out and log back in
 ```
 
 - Once you complete the implementation, you can test them out using `zsh test.sh`
