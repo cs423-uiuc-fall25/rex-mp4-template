@@ -97,4 +97,7 @@ Add yourself to `kvm` group:
 sudo usermod -aG kvm $USER # then log out and log back in
 ```
 
+> [!IMPORTANT]
+> You should launch QEMU VM inside nix shell (after `nix develop ...`)
+
 - Once you complete the implementation, you can test them out using `zsh test.sh`
