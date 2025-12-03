@@ -19,12 +19,20 @@ Your task is to implement a Rex kernel extension program that reads and pass CPU
 
 To implement the program, your objective is to
 
-1. Write a Rex program (`samples/mp1/src/main.rs`) that reads pids from the queue, looks up its CPU time and pass the result to the ring buffer. Static definition of queue and ring buffer are already provided.
+1. Write a Rex program (`samples/mp1/src/main.rs`) that reads pids from the queue, looks up its CPU time and pass the result to the ring buffer. Static definition of queue and ring buffer are already provided. (10 points)
+
+   Skip if the process doesn't exist or pid is invalid (10 points)
 2. Write a C program (`samples/mp1/loader.c`) that
-   - Downloads (to kernel) the Rex program above and hook it upon writes to `/dev/null` (the hook is already provided above)
-   - Passes pids from arguments to the queue
-   - Uses (how?) `process_ringbuf_data` to print CPU time from ring buffer
-   - Triggers the aforementioned Rex program by writting anything to `/dev/null`
+   - Downloads (to kernel) the Rex program above and hook it upon writes to `/dev/null` (the hook is already provided above) (10 points)
+   - Passes pids from arguments to the queue (10 points)
+   - Uses `process_ringbuf_data` to print CPU time from ring buffer (10 points)
+   - Triggers the aforementioned Rex program by writting anything to `/dev/null` (10 points)
+
+3. Your code is well commented, readable (5 points)
+
+   and warning-free during compiling and running (5 points)
+
+**Total points: 70**. You will lost dependent points if depended implementation is not correct and affects dependent result.
 
 > [!TIP]
 > We provide a test script (`samples/mp4/test.sh`) to help check your implementation by yourselves.
@@ -79,25 +87,24 @@ This change is persistent, next time you can follow [docs/getting-started.md](./
 
 #### Run and Test
 
-- Try examples provided by Rex
-
-If you get such error:
-
-```shell
-netid@fa25-cs423:~/mp4-name/build/linux$ ../../scripts/q-script/nix-q 
-Could not access KVM kernel module: Permission denied
-qemu-system-x86_64: failed to initialize kvm: Permission denied
-qemu-system-x86_64: falling back to tcg
-qemu-system-x86_64: CPU model 'host' requires KVM or HVF
-```
-
-Add yourself to `kvm` group:
-
-```shell
-sudo usermod -aG kvm $USER # then log out and log back in
-```
-
 > [!IMPORTANT]
 > You should launch QEMU VM inside nix shell (after `nix develop ...`)
+- Try examples provided by Rex
+
+    If you get such error:
+
+    ```shell
+    netid@fa25-cs423:~/mp4-name/build/linux$ ../../scripts/q-script/nix-q 
+    Could not access KVM kernel module: Permission denied
+    qemu-system-x86_64: failed to initialize kvm: Permission denied
+    qemu-system-x86_64: falling back to tcg
+    qemu-system-x86_64: CPU model 'host' requires KVM or HVF
+    ```
+
+    Add yourself to `kvm` group:
+
+    ```shell
+    sudo usermod -aG kvm $USER # then reboot the machine or run "newgrp kvm"
+    ```
 
 - Once you complete the implementation, you can test them out using `zsh test.sh`
