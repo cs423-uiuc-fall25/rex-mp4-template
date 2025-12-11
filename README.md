@@ -25,7 +25,7 @@ To implement the program, your objective is to
 2. Write a C program (`samples/mp1/loader.c`) that
    - Downloads (to kernel) the Rex program above and hook it upon writes to `/dev/null` (the hook is already provided above) (10 points)
    - Passes pids from arguments to the queue (10 points)
-   - Uses `process_ringbuf_data` to print CPU time from ring buffer (10 points)
+   - Uses `process_ringbuf_data` to print CPU time (utime, stime not supported yet in Rex) from ring buffer (10 points)
    - Triggers the aforementioned Rex program by writting anything to `/dev/null` (10 points)
 
 3. Your code is well commented, readable (5 points)
