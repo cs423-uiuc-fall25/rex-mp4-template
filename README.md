@@ -19,10 +19,10 @@ Your task is to implement a Rex kernel extension program that reads and pass CPU
 
 To implement the program, your objective is to
 
-1. Write a Rex program (`samples/mp1/src/main.rs`) that reads pids from the queue, looks up its CPU time and pass the result to the ring buffer. Static definition of queue and ring buffer are already provided. (10 points)
+1. Write a Rex program (`samples/mp4/src/main.rs`) that reads pids from the queue, looks up its CPU time and pass the result to the ring buffer. Static definition of queue and ring buffer are already provided. (10 points)
 
    Skip if the process doesn't exist or pid is invalid (10 points)
-2. Write a C program (`samples/mp1/loader.c`) that
+2. Write a C program (`samples/mp4/loader.c`) that
    - Downloads (to kernel) the Rex program above and hook it upon writes to `/dev/null` (the hook is already provided above) (10 points)
    - Passes pids from arguments to the queue (10 points)
    - Uses `process_ringbuf_data` to print CPU time (utime, stime not supported yet in Rex) from ring buffer (10 points)
@@ -43,20 +43,20 @@ To implement the program, your objective is to
 
 ```mermaid
 flowchart LR
-	mp1(fn mp1<br>src/main.rs)
+	mp4(fn mp4<br>src/main.rs)
 	subgraph Kernel/Rex
 	    Queue
 	    RingBuf
 	end
 	subgraph Userspace
-		loader-.->|1.load and attach<br>to /dev/null|mp1
+		loader-.->|1.load and attach<br>to /dev/null|mp4
 		loader-.->|2.register|ringbuffn(int process_ringbuf_data<br>loader.c)-.->|sample fn|RingBuf
-		loader-.->|3.trigger by write<br>/dev/null|mp1
-		loader-.->|4.unload|mp1
+		loader-.->|3.trigger by write<br>/dev/null|mp4
+		loader-.->|4.unload|mp4
 	end
 	loader(int main<br>loader.c)
-	mp1-->|submit CPU time|RingBuf
-	mp1-->|read from|Queue
+	mp4-->|submit CPU time|RingBuf
+	mp4-->|read from|Queue
 	loader-->|add pids|Queue
 	ringbuffn-->|read from|RingBuf
 ```
